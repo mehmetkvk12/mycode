@@ -1,0 +1,166 @@
+body{
+    background-color: #ffffff;
+}
+.menuu a{
+	
+	text-decoration: none;
+	color: rgb(115, 114, 114); 
+    
+}
+.menuu a:hover{
+    color: rgb(190, 123, 0);
+    
+}
+
+.menu{
+    
+    text-align: center;
+    background-color:rgb(250, 234, 207) ;
+    margin: auto;
+    width: 98%;
+    height: 120px;
+    border: #ffffff ;
+    border-radius: 15px;
+}
+.menuu{
+	
+	font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    
+}
+.ara{
+    background-color: #eee9e9;
+    margin:auto;
+    padding-left:28px;
+    font-size: 20px;
+    border-radius: 7px;
+    width: 450px;
+    height: 30px;
+}
+
+.usttable{
+    margin: auto;
+    border-radius: 10px;
+    
+}
+.orta{
+    background-color: white;
+    width: 98%;
+    height: 100%;
+    margin: auto;
+    border:  solid rgb(255, 255, 255);
+    border-radius: 12px;;
+}
+.orta table{
+    margin: auto;
+}
+
+.uruna {
+    text-decoration: none;
+
+    
+}
+.sagahizala{
+   margin: auto;
+   padding-left: 30px;
+   text-align: center;
+   
+}
+
+.ortaustust td {
+    border-radius: 5px;
+    margin: auto;
+    padding: 12px;
+}
+.ortaustust td a {
+    text-decoration: none;
+    
+    
+}
+.ortaustust td img{
+    border-radius: 12px;
+    
+}
+.ortaustust td:hover{
+    box-shadow: 0 2px 7px;
+}
+.ortaustust td img:hover{
+    box-shadow: 0 10px 15px;
+    color: rgb(164, 163, 163);
+}
+
+.filtre{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ortatable{
+   text-align: center;
+
+}
+.kayitol{
+    color: white;
+    font-size: 20px;
+    background-color: black;
+    width: 350px;
+    height: 500px;
+     margin: auto;
+     border-radius: 12px;
+     padding-left: 14px;
+     text-align: left;
+}
+.girisyap{
+    color: white;
+    font-size: 20px;
+    background-color: rgb(108, 108, 108);
+    width: 350px;
+    height: 500px;
+     margin: auto;
+     border-radius: 12px;
+    padding-left: 20px;
+     text-align: left;
+}
+#adsoyad, #email, #phone, #password{
+    border-radius: 5px;
+    width: 180px;
+    font-size: 25x;
+}
+#kayit, #giris{  
+    border-radius: 3px;
+    width: 150px;
+    font-size: 26px;
+    text-align: center;
+    margin-left: 80px;
+    margin-top: 20px;
+
+
+}
+.menu-item {
+    position: relative;
+    cursor: pointer;
+    
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    text-align: center;
+}
+
+.menu-item:hover .sub-menu {
+    display: block;
+}
+
+.sub-menu a {
+    display: block;
+    width: 100px;
+    background-color: #f0f0f0;
+    text-decoration: none;
+    color: #333;
+    border-radius: 7px;
+}
+
+.sub-menu a:hover {
+    background-color: #ddd;
+}
+
