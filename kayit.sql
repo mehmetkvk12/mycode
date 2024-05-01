@@ -105,18 +105,7 @@ CREATE TABLE IF NOT EXISTS `kayit` (
 --
 
 INSERT INTO `kayit` (`id`, `adsoyad`, `email`, `phone`, `password`) VALUES
-(1, 'Mehmet Kavuk', 'mehmetkvk212@gmail.com', '05318356559', 'Deneme21.3'),
-(2, 'Mehmet Kavuk', 'mehmetkvk212@gmail.com', '05318356559', 'Deneme21.3'),
-(3, 'Mehmet Kavuk', 'mehmetttt@gmail.com', '13541385145', 'Denemeeee21.3'),
-(4, 'Mehmet Kavuk', 'mehmetkvk212@gmail.com', '46545416356', 'Deneme21.3'),
-(5, 'Mehmet Kavuk', 'mehmetkvk212@gmail.com', '46545416356', 'Deneme21.3'),
-(6, 'Mehmet Kavuk', 'mehmetkvk212@gmail.com', '46548456453', 'svbvfzovblf'),
-(7, 'mehmet kavuk', 'mehmetkvk212@gmail.com', '46846841541', 'wrÄ±wkeowesn'),
-(8, 'Mehmet Kavuk', 'mehmetkvk212@gmail.com', '86465846465', 'Deneme21.3'),
-(9, 'Mehmet Kavuk', 'mehmetkvk214@gmail.com', '68485654655', '5jrebsd'),
-(10, 'Deneme', 'mehmetkvk123@gmail.com', '15848654646', 'Deneme21.3'),
-(11, 'Deneme12', 'deneme213@gmail.com', '87654645846', 'Deneme21.3'),
-(12, 'Sibel Ä°nci', 'sibel@gmail.com', '12345678456', '123456.');
+(1, 'Mehmet Kavuk', 'mehmetkvk212@gmail.com', '12345678912', 'Deneme21.3'),
 
 -- --------------------------------------------------------
 
