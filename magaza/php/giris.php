@@ -1,12 +1,6 @@
 <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kayit";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+session_start();
+include '../php/conn.php';
 
 if ($conn->connect_error) {
   die("Bağlantı hatası: " . $conn->connect_error);
@@ -15,22 +9,31 @@ if ($conn->connect_error) {
 
 $eposta = $_POST['email'];
 $sifre = $_POST['password'];
-
-
-
+$_SESSION['eposta'] = $eposta;
 $sql = "SELECT * FROM kayit WHERE email='$eposta' AND password='$sifre'";
+
+
+
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
+if ($result->num_rows >0) {
   $isimal=$result->fetch_assoc();
- // echo "<script>alert('Giriş Başarılı oldu. Hoş Geldiniz $isimal[adsoyad]'); window.location.href='../anasayfa.html'</script>";
-  echo "<script>window.location.href='../anasayfa.php'</script>";
+  
+ // header("Location: ../anasayfa.php");
+
+  //$geldigi_sayfa = $_SERVER['HTTP_REFERER']; 
+  //echo "<script>document.location.href=\"$geldigi_sayfa\"</script>"; 
+
+  if(isset($_SERVER['HTTP_REFERER'])) {
+    //$previous = $_SERVER['HTTP_REFERER'];
+    header('Location:../anasayfa.php' );
+exit;
+}
 } else {
 
-  echo "<script>alert('Giriş Başarılı olamadı'); window.location.href='../giris-kayit.php'</script>";
-  
+  echo '<div id="hataMesaji">Kullanıcı adı veya şifre hatalı.</div>';
 
 
 }
-
+//$conn->close();
 ?>
