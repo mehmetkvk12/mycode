@@ -26,209 +26,176 @@
      height: 15px;
 }
 
+.filtreler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.filtre-grup {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 150px;
+}
+
+.filtre-grup h3 {
+    margin: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.filtre-grup div {
+    padding-top: 10px;
+}
+
+.filtre-grup label {
+    display: block;
+}
+
+.filtre-grup input[type="checkbox"] {
+    margin-right: 5px;
+}
+
 
     </style>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
- 
+    
 </head>
 <body>
 
-    <div class="menu">
-        <table width="100%" height="100%" class="usttable">
-            <tr>
-            <td><a href="anasayfa.php"><img src="resim/markaadi.png" style="margin: auto;"></a></td>
-            <td>
-                <form class="aramaa" action="/arama" method="get">
-                    <button class="araicon"><img src="ico/search.png"></button>
-                      <input class="ara" type="search" placeholder="Ürün Arayın" maxlength="60" value>
-                      
-                        
-                </form>
-            </td>
-            <td class="menuu"><a href="favoriler.php"><img src="ico/likee.jpg" id="icoresim" >Favoriler</a></td>
-            <td class="menuu"><a href="#">Sepetim</a></td>
-            <td class="menuu"><a href="giris-kayit.php">
+
+        <?php
+        include 'php/conn.php';
+
+        echo "<div class='menu'>";
+        echo "<table width='100%' height='100%' class='usttable'>";
+        echo "<tr>";
+        echo "<td><a href='anasayfa.php'><img src='resim/markaadi.png' style='margin: auto;'></a></td>";
+        echo "<td>";
+
+        echo " <form class='aramaa' action='aramasonuclari.php' method='get'>";
+        echo "<button type='submit' class='araicon'><img src='ico/search.png'></button>";
+        echo "<input class='ara' type='search' name='arama' placeholder='Ürün Arayın' maxlength='60' value>";
+        echo "</form>";
+
+
+        echo "</td>";
+        echo "<td class='menuu'><a href='favoriler.php'><img src='ico/likee.jpg' id='icoresim' >Favoriler</a></td>";
+        echo "<td class='menuu'><a href='#'>Sepetim</a></td>";
+        echo "<td class='menuu'><a href='oturumacikmi.php'>";
+        echo "<div class='menu-item'>";
+
+  
+    if (isset($_POST['girisyap'])) {
+        $_POST['adsoyad'];
+        
+    } else {
+        echo "Hesabım";
+        
+    }
+  
+        echo "</div>";
+        echo "</a></td>";
+        echo "</tr></table>";
+        echo "</div>";
+      
+
+
             
-    <div class="menu-item">Hesabım</div>
-            </a>
+        ?>
+    
+            
 				
-            </td>
-            </tr>
             
-            </table>
-    </div>
+            
+    
     <div class="orta">
         
          <div class="ortaust">
             <table style="border: 4px solid rgb(255, 255, 255); width: 100%; height:100%;border-radius: 12px;">
                 <tr><td style="vertical-align: top; margin:12px; padding-top: 20px; padding-left: 10px;">
                     
-                    <div style=" display: flex; flex-direction: column; flex-wrap: wrap; position:relative; box-shadow: none; border-radius: 3px; font-size: 20px; width:150px;height:500px;overflow:auto;">
-                        <div >
-                            Cinsiyet<hr>
-                        </div>
-                        <div>
-                            <input type="checkbox"><label class="filtre">Erkek</label><br>
-                            <input type="checkbox"><label class="filtre">Kadın</label>
-                        </div>
+                <div class="filtreler">
+        <form action="filtrele.php" method="post">
+    <div class="filtre-grup">
+        <h3>Cinsiyet</h3>
+        <div>
+            <label for="erkek"><input type="checkbox" id="e" name="cinsiyet[e]" value="Erkek"> Erkek</label><br>
+            <label for="kadin"><input type="checkbox" id="k" name="cinsiyet[k]" value="Kadın"> Kadın</label>
+        </div>
+    </div>
 
-                        <div style="padding-top: 20px;">
-                           Beden <hr>
-                        </div>
-                        <div>   
-                            <input type="checkbox" ><label class="filtre">XS</label><br>
-                            <input type="checkbox"><label class="filtre" >S</label><br>
-                            <input type="checkbox"><label class="filtre">M</label><br>
-                            <input type="checkbox"><label class="filtre">L</label><br>
-                            <input type="checkbox"><label class="filtre">XL</label><br>
-                            <input type="checkbox"><label class="filtre">XXL</label>
-                        </div>
+    <div class="filtre-grup">
+        <h3>Beden</h3>
+        <div>   
+            <label for="xs"><input type="checkbox" id="xs" name="beden[]" value="XS"> XS</label><br>
+            <label for="s"><input type="checkbox" id="s" name="beden[]" value="S"> S</label><br>
+            <label for="m"><input type="checkbox" id="m" name="beden[]" value="M"> M</label><br>
+            <label for="l"><input type="checkbox" id="l" name="beden[]" value="L"> L</label><br>
+            <label for="xl"><input type="checkbox" id="xl" name="beden[]" value="XL"> XL</label><br>
+            <label for="xxl"><input type="checkbox" id="xxl" name="beden[]" value="XXL"> XXL</label>
+        </div>
+    </div>
 
-                        <div style="padding-top: 20px;">
-                            Fiyat Aralığı<hr>
-                        </div>
-                        <div>
-                            <input type="number" placeholder="Min. Fiyat" >
-                            <input type="number" placeholder="Max. Fiyat" >
-                            <button>Tamam</button>
-                        </div>  
-                     </div>
+    <div class="filtre-grup">
+        <h3>Fiyat Aralığı</h3>
+        <div>
+        <input type="text" class="fiyat" placeholder="En Az" name="en_az">
+        <span>-</span>
+        <input type="text" class="fiyat" placeholder="En Çok" name="en_cok">
+
+            
+        </div>
+        <input type="submit" value="Filtrele">
+        </form>
+    </div>
+</div>
+
                      
                     </td>
                     <td class="sagahizala">
-                     <table>
-                          <tr class="ortaustust">
+                     <table class="ortaustust" >
+                          <tr >
                               
-                                <?php
+                          <?php
+                          session_start();
                                 
-                                $servername = "localhost";
-                                $username = "root";
-                                $password = "";
-                                $dbname = "kayit";
-    
-                                $conn = new mysqli($servername, $username, $password, $dbname);
-                                $conn->set_charset("utf8mb4");
+                                include 'php/conn.php';
+                                // Veritabanından ürünleri al
+                    $urunler = array();
+                    for ($i = 1; $i <= 12; $i++) {
+                        $urunlerial = "SELECT * FROM urun WHERE urunid = $i";
+                        $result = $conn->query($urunlerial);
+                    
+                        if ($result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            $urunler[$i] = $row;
+                        } else {
+                            echo "Ürün bulunamadı.";
+                        }
+                    }
+
+                        // Ürünleri tablo içinde döngüyle yazdırma
+                       // echo "<tr>";
+                        foreach ($urunler as $urunid => $urun) {
+                            echo "<td>"; 
+                            echo "<a href='urunler/urun.php?urun=$urunid'><img src='urunler/urun/urun{$urunid}photo/{$urun['urunurl']}.jpg' width='280px' height='400px'>";
+                            echo "<p style='font-size: 18px; color: black;'>{$urun['urunadi']}</p>";
+                            echo "<p style='color: red; font-size: 30px; padding-left: 20px;'>{$urun['fiyati']} TL</p>";
+                            echo "</a></td>";
+                            if ($urunid % 4 == 0) { // Her 4 üründen sonra yeni satıra geç
+                                echo "</tr><tr>"; // Satır sonu ve yeni satır başlangıcı
+                            }
+                        }
+                        echo "</tr>"; // Son satırın sonu
+                        echo "</table>";
 
 
-                                
-                                $urunbir = "SELECT * FROM urun WHERE urunid = 1";
-                                $uruniki="SELECT * FROM urun WHERE urunid = 2";
-                                $urunuc="SELECT * FROM urun WHERE urunid = 3";
 
-                                
-                           $result = $conn->query($urunbir);
-                           
-                           if ($result->num_rows > 0) {
-                               while($row = $result->fetch_assoc()) {
-                                   $urunbiradi= $row["urunadi"];
-                                   $urunbirfiyati= $row["fiyati"];
-                                   $urunbirurl = $row["urunurl"];
-                                   
-                               }
-                           } else {
-                               echo "Ürün bulunamadı.";
-                           }
-
-                           $result = $conn->query($uruniki);
-                           
-                           if ($result->num_rows > 0) {
-                               while($row = $result->fetch_assoc()) {
-                                   $urunikiadi= $row["urunadi"];
-                                   $urunikifiyati= $row["fiyati"];
-                                   $urunikiurl = $row["urunurl"];
-                                   
-                               }
-                           } else {
-                               echo "Ürün bulunamadı.";
-                           }
-                           $result = $conn->query($urunuc);
-                           
-                           if ($result->num_rows > 0) {
-                               while($row = $result->fetch_assoc()) {
-                                   $urunucadi= $row["urunadi"];
-                                   $urunucfiyati= $row["fiyati"];
-                                   $urunucurl = $row["urunurl"];
-                                   
-                               }
-                           } else {
-                               echo "Ürün bulunamadı.";
-                           }
-                                echo "<td>";
-                                echo " <a href='urunler/urun.php?link_number=1' value='urunid1' ><img src='urunler\urun\urun1photo/$urunbirurl.jpg' width='280px' height='400px' >";
-                                echo "<p style='font-size: 18px; color: black;'>$urunbiradi</p>";
-                                echo "<p style='color: red; font-size: 30px; padding-left: 20px;'>$urunbirfiyati TL</p></a>";
-                                echo "</td>";
-                                echo "<td>";
-                                echo "<a href='urunler/urun.php' value='urunid2' name='baskitshirt'><img src='urunler\urun\urun2photo/$urunikiurl.jpg' width='280px' height='400px' >";
-                                echo " <p style='font-size: 18px; color: black;'>$urunikiadi</p>";
-                                echo "<p style='color: red; font-size: 30px; padding-left: 20px;'>$urunikifiyati TL</p></a>";
-                                echo "</td>";
-                                echo "<td>";
-                                echo "<a href='urunler/urun.php' value='urunid3' name='baskitshirt'><img src='urunler\urun\urun3photo/$urunucurl.jpg' width='280px' height='400px' >";
-                                echo " <p style='font-size: 18px; color: black;'>$urunucadi</p>";
-                                echo "<p style='color: red; font-size: 30px; padding-left: 20px;'>$urunucfiyati TL</p></a>";
-                                echo "</td>";
-                                echo "<td>";
-
-                                
                                 ?>
-                                
-                            
-                            
-                              <td><a href="urunler/urun.php"><img src="resim/urun.png" >
-                                <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                            </td>
-                         </tr>
-                    </table>
-                   <table  >
-                                <tr class="ortaustust">
-                                    <td>
-                                        <a href="urunler/urun.php"><img src="resim/urun.png" >
-                                    <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                    <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                                    </td>
-                                      <td><a href="urunler/urun.php"><img src="resim/urun.png" >
-                                        <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                        <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                                    </td>
-                                    <td>
-                                        <a href="urunler/urun.php"><img src="resim/urun.png" >
-                                    <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                    <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                                    </td>
-                                      <td><a href="urunler/urun.php"><img src="resim/urun.png" >
-                                        <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                        <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                                    </td>
-                                </tr>
-                                
-                        </table>
-                        <table  >
-                              <tr class="ortaustust">
-                                <td>
-                                    <a href="urunler/urun.php"><img src="resim/urun.png" >
-                                <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                                </td>
-                                  <td><a href="urunler/urun.php"><img src="resim/urun.png" >
-                                    <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                    <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                                </td>
-                                <td>
-                                    <a href="urunler/urun.php"><img src="resim/urun.png" >
-                                <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                                </td>
-                                  <td><a href="urunler/urun.php"><img src="resim/urun.png" >
-                                    <p style="font-size: 18px; color: black;">Erkek Lacivert %100 Pamuk Slim Fit Dar Kesim Bisiklet Yaka Kısa Kollu Tişört</p>
-                                    <p style="color: red; font-size: 30px; padding-left: 20px;">___TL</p></a>
-                                </td>
-                                </tr>
-                                
-                            </table>
-                    </td>
+                                                            
                 </tr>
             </table>
 
