@@ -1,4 +1,7 @@
-
+<?php
+include 'php/conn.php';
+session_start()
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -135,13 +138,13 @@
           <label for="password">Şifre</label><br>
           <input type="password" id="password" name="password" required >
 
-          <button type="button" onclick="togglePasswordVisibility()" id="toggleButton">
+          <button type="button" onclick="togglePasswordVisibility()" id="toggleButton"  >
             <i class="bi bi-eye" id="showIcon" alt="deneme" ></i>
             <i class="bi bi-eye-slash" id="hideIcon" style="display:none;" alt="deneme"></i>
             </button>
           <br><br>
         
-          <input type="submit" value="Giriş Yap" id="giris">
+          <input type="submit" value="Giriş Yap" id="giris" name="girisyap">
         </form>
 
          <!--Sifrenin Gorunurlugu icin SCRİPT kodları-->
