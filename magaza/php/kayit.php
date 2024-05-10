@@ -1,11 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "kayit";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+session_start();
+include 'php/conn.php';
 
 if ($conn->connect_error) {
     die("Veritabanı bağlantısı başarısız: " . $conn->connect_error);
