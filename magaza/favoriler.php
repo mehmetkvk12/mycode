@@ -28,6 +28,17 @@
      height: 15px;
 }
 
+.urun-listesi {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.urun {
+    width: 25%; /* Her ürünün genişliği */
+    padding: 10px;
+    box-sizing: border-box; /* Padding'in genişlik hesabına dahil edilmesi */
+}
+
     </style>
 <!-- Ürün Resim Değişimi -->
 <script>
@@ -70,15 +81,56 @@
                 <tr>
                     <td class="sagahizala">
                     
-                        <?php
+                    <table class="ortaustust" >
+                        
+                    <?php
+session_start();
 
-                                  
+// Kullanıcı oturum açmış mı kontrol edelim
+if(isset($_SESSION['eposta'])) {
+    // Kullanıcı oturum açmışsa, favori ürünleri çekelim
+    include 'php/conn.php'; // Veritabanı bağlantısı
 
-                            
-                           
-                        ?>                                                            
+    $emaill = $_SESSION['eposta']; // Kullanıcının e-posta adresini alalım
+
+    // Favori ürünleri veritabanından çekelim
+    $sqlal = "SELECT urun.urunadi, urun.fiyati, urun.urunurl, urun.urunid
+            FROM favoriler
+            INNER JOIN urun ON favoriler.urunid = urun.urunid
+            WHERE favoriler.email = '$emaill'";
+
+    $result = $conn->query($sqlal);
+
+    // Favori ürünleri var mı kontrol edelim
+    if ($result->num_rows > 0) {
+        // Favori ürünleri tablo şeklinde gösterelim
+        
+        $counter = 0;
+        while($row = $result->fetch_assoc()) {
+            $link = $row['urunid'];
+                $id= $link;
+                $urunphoto="urun" . $id . "photo";
+                echo "<td width='300' height='450'>";
+                echo "<a href='urunler/urun.php?urun=$link'><img src='urunler/urun/$urunphoto/" . $row["urunurl"]. ".jpg' width='280px' height='400px'>";
+                echo "<p style='font-size: 18px; color: black;'>Fiyat: " . $row["urunadi"]. "</p>";
+                echo "<p style='color: red; font-size: 30px; padding-left: 20px;'>Fiyat: " . $row["fiyati"]. "</p>";
+                // Diğer bilgileri de buraya ekleyebilirsiniz
+                //echo "</div>";
+                echo "</a></td>";
+                $counter++;
+                if ($counter % 4 == 0) { // Her 4 üründe bir alt satıra geçmek için kontrol
+                    echo "</tr><tr>";
+                }
+                }  }
+} else {
+    // Kullanıcı oturum açmamışsa, favori ürünleri gösterme
+    echo "Lütfen önce giriş yapınız.";
+}
+?>
+
+                                                         
                                    
-
+                    </table>
                         
                     </td>
                     <td>
